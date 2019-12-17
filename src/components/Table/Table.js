@@ -1,4 +1,35 @@
 import React, { Component } from 'react';
+import Row from '../Row/Row';
+import Department from '../Department/Department';
+import InviteButton from '../InviteButton/InviteButton';
+import './table.scss';
+
+const data = [
+    {
+        name: 'John',
+        department: 'Engineering',
+        reports: 2,
+        invited: '1/1/19',
+        activated: '1/2/19',
+        deactivated: null,
+    },
+    {
+        name: 'Jimmy',
+        department: 'Product',
+        reports: 5,
+        invited: '1/1/19',
+        activated: '1/2/19',
+        deactivated: null,
+    },
+    {
+        name: 'Joseph',
+        department: 'Sales',
+        reports: 90,
+        invited: '1/1/19',
+        activated: null,
+        deactivated: null,
+    },
+]
 
 export default class Table extends Component {
     constructor(props) {
@@ -8,11 +39,37 @@ export default class Table extends Component {
         }
     }
 
+    renderRows = (data) => {
+        return data.map(manager => <Row manager={manager} />);
+    }
+
     render() {
         return (
-            <div>
-                This is a table
-            </div>
+            <table className='Table'>
+                <thead>
+                    <tr>
+                        <th className='top-table'>Managers (102)</th>
+                        <th className='top-table'></th>
+                        <th className='top-table'>105</th>
+                        <th className='top-table invited'>76</th>
+                        <th className='top-table activated'>54</th>
+                        <th className='top-table deactivated'>0</th>
+                        <th className='top-table'></th>
+                    </tr>
+                    <tr>
+                        <th className='header'>Named</th>
+                        <th className='header'>Department</th>
+                        <th className='header'>Reports</th>
+                        <th className='header'>Invited</th>
+                        <th className='header'>Activated</th>
+                        <th className='header'>Deactivated</th>
+                        <th className='header'>User Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {this.renderRows(data)}
+                </tbody>
+            </table>
         );
     }
 }
