@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import Row from '../Row/Row';
-import Department from '../Department/Department';
-import InviteButton from '../InviteButton/InviteButton';
 import './table.scss';
 
-const data = [
+const testData = [
     {
         name: 'John',
         department: 'Engineering',
@@ -35,7 +33,7 @@ export default class Table extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: [],
+            data: testData,
         }
     }
 
@@ -44,6 +42,7 @@ export default class Table extends Component {
     }
 
     render() {
+        const { data } = this.state;
         return (
             <table className='Table'>
                 <thead>
